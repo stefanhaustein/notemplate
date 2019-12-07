@@ -57,22 +57,22 @@
 
   // View
 
-	function render() {
-	  document.getElementsByClassName("todoapp")[0].replaceWith(
-	    element("section", {"class": "todoapp"},
-	      element("header", {"class": "header"},
-	        element("h1", "todos"),
-	        element("form", {submit: event => addItem(event)},
-	          element("input", {
-	            class: "new-todo",
-	            autofocus: "autofocus",
-	            placeholder: "What needs to be done?",
-	            change: event => state.text = event.target.value}))),
-	      renderMain(),
-	      renderFooter()));
-	}
+  function render() {
+    document.getElementsByClassName("todoapp")[0].replaceWith(
+      element("section", {"class": "todoapp"},
+        element("header", {"class": "header"},
+          element("h1", "todos"),
+          element("form", {submit: event => addItem(event)},
+            element("input", {
+              class: "new-todo",
+              autofocus: "autofocus",
+              placeholder: "What needs to be done?",
+              change: event => state.text = event.target.value}))),
+        renderMain(),
+        renderFooter()));
+  }
 
-	function renderMain() {
+  function renderMain() {
     return state.items.length == 0 ? null :
       element("section", {class: "main"},
         element("input", {
@@ -85,7 +85,7 @@
         renderTodoList(state.items));
   }
 
-	function renderFooter() {
+  function renderFooter() {
     return state.items.length == 0 ? null :
       element("footer", {class: "footer"},
         element("span", {class: "todo-count"},
