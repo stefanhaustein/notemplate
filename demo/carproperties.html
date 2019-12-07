@@ -1,0 +1,32 @@
+<html>
+<body>
+
+Inspired by a corresponding
+<a href="https://idangero.us/template7/">Template7</a> example.
+
+<p>Car properties:</p>
+
+<script src="../src/notemplate.js"></script>
+<script type="text/javascript">
+
+  // The "template"
+  function renderCarProperties(car) {
+    return element("ul", Object.entries(car).map(([property, value]) =>
+      element("li", property, " ", value)));
+  }
+
+  // Some data to render
+  let car = {
+    power: "150 hp",
+    speed: "200 km/h"
+  };
+
+  // Combine template and data
+  let rendered = renderCarProperties(car);
+
+  // Show the result
+  document.body.appendChild(rendered);
+
+</script>
+</body>
+</html>

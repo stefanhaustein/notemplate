@@ -1,0 +1,32 @@
+<html>
+<body>
+
+Inspired by a corresponding
+<a href="https://idangero.us/template7/">Template7</a> example.
+
+<p>Here is the list of peole I know:</p>
+
+<script src="../src/notemplate.js"></script>
+<script type="text/javascript">
+
+  // The "template"
+  function renderPersonList(personList) {
+    return element("ul", personList.map(person =>
+      element("li", person.firstName, " ", person.lastName)));
+  }
+
+  // Some data to render
+  let people = [
+    {firstName: "John", lastName: "Doe"},
+    {firstName: "Mark", lastName: "Johnson"}
+  ];
+
+  // Combine template and data
+  let rendered = renderPersonList(people);
+
+  // Show the result
+  document.body.appendChild(rendered);
+
+</script>
+</body>
+</html>
