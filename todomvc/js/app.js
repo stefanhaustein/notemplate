@@ -57,6 +57,50 @@
 
   // View
 
+	function render() {
+	  document.getElementsByClassName("todoapp")[0].replaceWith(
+	    element("section", {"class": "todoapp"},
+	      element("header", {"class": "header"},
+	        element("h1", "todos"),
+	        element("form", {submit: event => addItem(event)},
+	          element("input", {
+	            class: "new-todo",
+	            autofocus: "autofocus",
+	            placeholder: "What needs to be done?",
+	            change: event => state.text = event.target.value}))),
+	      renderMain(),
+	      renderFooter()));
+	}
+
+	function renderMain() {
+    return state.items.length == 0 ? null :
+      element("section", {class: "main"},
+        element("input", {
+            id: "toggle-all",
+            class: "toggle-all",
+            checked: countOpenItems() == 0 ? "checked" : null,
+            type: "checkbox",
+            click: event => setAll(event.target.checked)}),
+        element("label", {for: "toggle-all"}, "Mark all as complete"),
+        renderTodoList(state.items));
+  }
+
+	function renderFooter() {
+    return state.items.length == 0 ? null :
+      element("footer", {class: "footer"},
+        element("span", {class: "todo-count"},
+          element("strong", countOpenItems()),
+          " items left"),
+        element("ul",
+          {class: "filters"},
+           [["All", ""], ["Active", "active"], ["Completed", "completed"]].map(([label, key]) =>
+            element("li",
+              element("a", {
+                href: "#/" + key,
+                class: currentFilter == key ? "selected" : ""},
+              label)))));
+  }
+
   function renderTodoList() {
     return element("ul", {class: "todo-list"}, state.items.map((item, index) => renderItem(item, index)));
   }
@@ -90,51 +134,5 @@
         blur: render}));
   }
 
-  function renderMain() {
-    return state.items.length == 0 ? null :
-      element("section", {class: "main"},
-        element("input", {
-            id: "toggle-all",
-            class: "toggle-all",
-            checked: countOpenItems() == 0 ? "checked" : null,
-            type: "checkbox",
-            click: event => setAll(event.target.checked)}),
-        element("label", {for: "toggle-all"}, "Mark all as complete"),
-        renderTodoList(state.items));
-  }
-
-  function renderFooter() {
-    return state.items.length == 0 ? null :
-      element("footer", {class: "footer"},
-        element("span", {class: "todo-count"},
-          element("strong", countOpenItems()),
-          " items left"),
-        element("ul",
-          {class: "filters"},
-           [["All", ""], ["Active", "active"], ["Completed", "completed"]].map(([label, key]) =>
-            element("li",
-              element("a", {
-                href: "#/" + key,
-                class: currentFilter == key ? "selected" : ""},
-              label)))));
-  }
-
-
-  function render() {
-    document.getElementsByClassName("todoapp")[0].replaceWith(
-      element("section", {"class": "todoapp"},
-        element("header", {"class": "header"},
-          element("h1", "todos"),
-          element("form", {submit: event => addItem(event)},
-            element("input", {
-              class: "new-todo",
-              autofocus: "autofocus",
-              placeholder: "What needs to be done?",
-              change: event => state.text = event.target.value}))),
-        renderMain(),
-        renderFooter()));
-  }
-
   updateFilter();
-
 })(window);
