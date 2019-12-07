@@ -17,6 +17,8 @@ Additional parameters build the content:
 - Arrays are automatically flattened to simplify building from fragments.
 - Null values are ignored to simplify handling conditional children
 
+For components, create functions that return elements. 
+
 ## Example
 
 ```javascript
