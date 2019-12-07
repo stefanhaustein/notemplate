@@ -1,7 +1,9 @@
 # NoTemplate
 NoTemplate is not a template library.
 
-Just build the DOM tree using nested `element()` calls. The first parameter is the element name.
+It only provides a single function `element()`. Use nested `element()` calls to build a DOM tree in pure JS. 
+
+The first parameter is the element name.
 
 Additional parameters build the content:
 
@@ -27,3 +29,7 @@ document.body.appendChild(
         click: event => alert("Hello")}
       "World")));
 ```
+
+## Live Demo
+
+[TodoMVC in < 150 LOC](http://kobjects.org/todomvc/) 
