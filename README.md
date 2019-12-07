@@ -30,6 +30,6 @@ document.body.appendChild(
       "World")));
 ```
 
-## Live Demo
+## Live Demo
 
 [TodoMVC in < 150 LOC](http://kobjects.org/todomvc/) 
