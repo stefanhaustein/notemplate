@@ -1,4 +1,4 @@
-# notemplate
+# NoTemplate
 NoTemplate is not a template library.
 
 Just build the DOM tree using nested `element()` calls. The first parameter is the element name.
@@ -15,4 +15,15 @@ Additional parameters build the content:
 - Arrays are automatically flattened to simplify building from fragments.
 - Null values are ignored to simplify handling conditional children
 
+## Example
 
+```javascript
+
+document.body.appendChild(
+  element("p", 
+    "Hello ",
+    element("a", {
+        href: "#",
+        click: event => alert("Hello")}
+      "World")));
+```
