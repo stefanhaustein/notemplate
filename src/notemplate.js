@@ -8,14 +8,14 @@ function element(name, ...content) {
         if (child instanceof Node) {
           element.appendChild(child);
         } else if (child != null) {
-          let keys = Object.keys(child);
-          for (let i = 0; i < keys.length; i++) {
-            let key = keys[i];
+          for (key in child) {
             let value = child[key];
             if (key == "class") {
               let names = Array.isArray(value) ? value.flat(Infinity) : value.split(' ');
               for (let j = 0; j < names.length; j++) {
-                element.classList.add(names[j]);
+                if (names[j] != null && names[j] != "") {
+                  element.classList.add(names[j]);
+                }
               }
             } else if (key == "style") {
               if (typeof value == 'object') {
