@@ -28,7 +28,7 @@ document.body.appendChild(
     "Hello ",
     element("a", {
         href: "#",
-        click: event => alert("Hello")}
+        click: event => alert("Hello")},
       "World")));
 ```
 
