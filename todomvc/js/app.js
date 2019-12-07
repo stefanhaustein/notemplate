@@ -4,10 +4,8 @@
   // Model
 
   let currentFilter = "";  // Not part of the persistent state.
-  let state = JSON.parse(localStorage.getItem("state")) || {
-    text: "",
-    items: [],
-  };
+  let state = JSON.parse(localStorage.getItem("state")) ||
+      { text: "", items: []};
 
   // Controller
 
@@ -59,15 +57,15 @@
 
   function render() {
     document.getElementsByClassName("todoapp")[0].replaceWith(
-      element("section", {"class": "todoapp"},
-        element("header", {"class": "header"},
+      element("section", {class: "todoapp"},
+        element("header", {class: "header"},
           element("h1", "todos"),
           element("form", {submit: event => addItem(event)},
             element("input", {
-              class: "new-todo",
-              autofocus: "autofocus",
-              placeholder: "What needs to be done?",
-              change: event => state.text = event.target.value}))),
+                class: "new-todo",
+                autofocus: "autofocus",
+                placeholder: "What needs to be done?",
+                change: event => state.text = event.target.value}))),
         renderMain(),
         renderFooter()));
   }
@@ -89,8 +87,7 @@
     return state.items.length == 0 ? null :
       element("footer", {class: "footer"},
         element("span", {class: "todo-count"},
-          element("strong", countOpenItems()),
-          " items left"),
+          element("strong", countOpenItems()), " items left"),
         element("ul",
           {class: "filters"},
            [["All", ""], ["Active", "active"], ["Completed", "completed"]].map(([label, key]) =>
@@ -110,20 +107,20 @@
       return null;
     }
     return element("li",
-      (item.completed ? {"class": "completed"} : null),
-      {dblclick: event => {
+      (item.completed ? {class: "completed"} : null), {
+        dblclick: event => {
           let li = event.target.closest("li");
           li.classList.add("editing");
           li.querySelector(".edit").focus();
-      }},
-       element("div", {"class": "view"},
+        }},
+      element("div", {class: "view"},
         element("input", {
-          class: "toggle",
-          type: "checkbox",
-          checked: item.completed ? "checked" : null,
-          change: () => toggleItem(index)}),
+            class: "toggle",
+            type: "checkbox",
+            checked: item.completed ? "checked" : null,
+            change: () => toggleItem(index)}),
         element("label", item.text),
-        element("button", {"class": "destroy"}, () => destroyItem(index))),
+        element("button", {class: "destroy"}, () => destroyItem(index))),
       element("input", {
         class: "edit",
         value: item.text,
@@ -133,6 +130,5 @@
         },
         blur: render}));
   }
-
   updateFilter();
 })(window);
