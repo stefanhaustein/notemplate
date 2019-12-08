@@ -1,4 +1,4 @@
-# NoTemplate
+# NoTemplate.js
 NoTemplate is not a template library.
 
 It only provides a single function `element()`. Use nested `element()` calls to build a DOM tree in pure JS. 
