@@ -19,7 +19,7 @@ Additional parameters build the content:
 
 For components, create functions that return elements. 
 
-## Example
+## Trivial Example
 
 ```javascript
 
@@ -32,8 +32,9 @@ document.body.appendChild(
       "World")));
 ```
 
-## Live Demo
+## TodoMVS with notemplate.js
 
-[TodoMVC in < 150 LOC](http://kobjects.org/todomvc/) 
+- [Source Code](https://github.com/stefanhaustein/notemplate/blob/master/todomvc/js/app.js) (< 150 LOC) 
+- [Demo](http://kobjects.org/todomvc/) 
 
 ![Developer Tools Network Tab](https://user-images.githubusercontent.com/4282319/70658877-2b2c0f00-1c5f-11ea-87de-ab948f09b10f.png)
