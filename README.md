@@ -35,6 +35,7 @@ document.body.appendChild(
 ## TodoMVC Implementation
 
 - [Source Code](https://github.com/stefanhaustein/notemplate/blob/master/todomvc/js/app.js) (< 150 LOC) 
-- [Demo](http://kobjects.org/todomvc/) 
+- [Live Demo](http://kobjects.org/todomvc/) 
+- Should be one of the fastest loading readable / unobfuscated implementations: 
 
 ![Developer Tools Network Tab](https://user-images.githubusercontent.com/4282319/70658877-2b2c0f00-1c5f-11ea-87de-ab948f09b10f.png)
