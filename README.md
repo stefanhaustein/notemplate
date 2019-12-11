@@ -32,7 +32,7 @@ document.body.appendChild(
       "World")));
 ```
 
-## TodoMVS with notemplate.js
+## TodoMVC Implementation
 
 - [Source Code](https://github.com/stefanhaustein/notemplate/blob/master/todomvc/js/app.js) (< 150 LOC) 
 - [Demo](http://kobjects.org/todomvc/) 
