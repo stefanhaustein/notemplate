@@ -35,3 +35,5 @@ document.body.appendChild(
 ## Live Demo
 
 [TodoMVC in < 150 LOC](http://kobjects.org/todomvc/) 
+
+![Developer Tools Network Tab](https://user-images.githubusercontent.com/4282319/70658877-2b2c0f00-1c5f-11ea-87de-ab948f09b10f.png)
