@@ -1,7 +1,8 @@
 # NoTemplate.js
-NoTemplate.js is not a template library.
 
-It only provides a single function `element()`. Use nested `element()` calls to build a DOM tree in pure JS. 
+After working on html templating for ~10 years, I think the best template library is no template library.
+
+NoTemplate.js provides only a single function `element()`. Use nested `element()` calls to build a DOM tree in pure JS in a clean and safe manner: 
 
 The first parameter is the element name.
 
