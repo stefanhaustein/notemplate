@@ -2,7 +2,7 @@
 
 After working on html templating for ~10 years, I think the best template library is no template library.
 
-NoTemplate.js provides only a single function `element()`. Use nested `element()` calls to build a DOM tree in pure JS in a clean and safe manner: 
+NoTemplate.js provides only a single function `element()`. Use nested `element()` calls to build a DOM tree in pure JS in a clean and safe manner:
 
 The first parameter is the element name.
 
@@ -10,7 +10,7 @@ Additional parameters build the content:
 
 - Strings are safely added as text nodes. No need to escape anything.
 - DOM Nodes (in particular elements) are added as child nodes.
-- Properties of nested plain objects are treated as 
+- Properties of nested plain objects are treated as
   - Attributes where the value is a string
   - Event handlers where the value is a function
   - For "style", the value can be an object, which is translated to style properties
@@ -18,14 +18,14 @@ Additional parameters build the content:
 - Arrays are automatically flattened to simplify building from fragments.
 - Null values are ignored to simplify handling conditional children
 
-For components, create functions that return elements. 
+For components, create functions that return elements.
 
 ## Simple Example
 
 ```javascript
 
 document.body.appendChild(
-  element("p", 
+  element("p",
     "Hello ",
     element("a", {
         href: "#",
@@ -35,8 +35,8 @@ document.body.appendChild(
 
 ## TodoMVC Implementation
 
-- [Source Code](https://github.com/stefanhaustein/notemplate/blob/master/todomvc/js/app.js) (< 150 LOC; the view code starts around line 56) 
-- [Live Demo](http://kobjects.org/todomvc/) 
+- [Source Code](https://github.com/stefanhaustein/notemplate/blob/master/todomvc/js/app.js) (< 150 LOC; the view code starts around line 56)
+- [Live Demo](https://stefanhaustein.github.io/notemplate/demo/todomvc) 
 - Should be one of the fastest loading readable / unobfuscated implementations: 
 
 ![Developer Tools Network Tab](https://user-images.githubusercontent.com/4282319/70658877-2b2c0f00-1c5f-11ea-87de-ab948f09b10f.png)
