@@ -20,7 +20,7 @@ Additional parameters build the content:
 
 For components, create functions that return elements. 
 
-## Trivial Example
+## Simple Example
 
 ```javascript
 
