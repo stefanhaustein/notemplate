@@ -1,7 +1,8 @@
 # NoTemplate.js
-NoTemplate.js is not a template library.
 
-It only provides a single function `element()`. Use nested `element()` calls to build a DOM tree in pure JS. 
+After working on html templating for ~10 years, I think the best template library is no template library.
+
+NoTemplate.js provides only a single function `element()`. Use nested `element()` calls to build a DOM tree in pure JS in a clean and safe manner: 
 
 The first parameter is the element name.
 
@@ -19,7 +20,7 @@ Additional parameters build the content:
 
 For components, create functions that return elements. 
 
-## Example
+## Simple Example
 
 ```javascript
 
@@ -32,6 +33,10 @@ document.body.appendChild(
       "World")));
 ```
 
-## Live Demo
+## TodoMVC Implementation
 
-[TodoMVC in < 150 LOC](http://kobjects.org/todomvc/) 
+- [Source Code](https://github.com/stefanhaustein/notemplate/blob/master/todomvc/js/app.js) (< 150 LOC; the view code starts around line 56) 
+- [Live Demo](http://kobjects.org/todomvc/) 
+- Should be one of the fastest loading readable / unobfuscated implementations: 
+
+![Developer Tools Network Tab](https://user-images.githubusercontent.com/4282319/70658877-2b2c0f00-1c5f-11ea-87de-ab948f09b10f.png)
