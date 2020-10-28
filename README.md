@@ -12,7 +12,7 @@ Additional parameters build the content:
 - DOM Nodes (in particular elements) are added as child nodes.
 - Properties of nested plain objects are treated as
   - Attributes where the value is a string
-  - Boolean attributes where the value is a boolean
+  - Boolean attributes where the value is a boolean (empty string for true, absence otherwise)
   - Event handlers where the value is a function
   - For "style", the value can be an object, which is translated to style properties
   - For "class", the value can be an array
