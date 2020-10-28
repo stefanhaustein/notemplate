@@ -28,6 +28,10 @@ function element(name, ...content) {
               }
             } else if (typeof value == 'function') {
               element.addEventListener(key, value);
+            } else if (typeof value == 'boolean') {
+              if (value) {
+                element.setAttribute(key, '');
+              }
             } else if (value != null) {
               element.setAttribute(key, value);
            }
