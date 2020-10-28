@@ -63,7 +63,7 @@
           element("form", {submit: event => addItem(event)},
             element("input", {
                 class: "new-todo",
-                autofocus: "autofocus",
+                autofocus: true,
                 placeholder: "What needs to be done?",
                 change: event => state.text = event.target.value}))),
         renderMain(),
@@ -76,7 +76,7 @@
         element("input", {
             id: "toggle-all",
             class: "toggle-all",
-            checked: countOpenItems() == 0 ? "checked" : null,
+            checked: countOpenItems() == 0,
             type: "checkbox",
             click: event => setAll(event.target.checked)}),
         element("label", {for: "toggle-all"}, "Mark all as complete"),
@@ -117,7 +117,7 @@
         element("input", {
             class: "toggle",
             type: "checkbox",
-            checked: item.completed ? "checked" : null,
+            checked: item.completed,
             change: () => toggleItem(index)}),
         element("label", item.text),
         element("button", {class: "destroy"}, () => destroyItem(index))),
