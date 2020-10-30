@@ -49,3 +49,16 @@ function element(name, ...content) {
   }
   return element;
 }
+function registerElementHelpers(scope, overrideOverwriteScope=true) {
+  // List from: https://www.w3.org/TR/html52/fullindex.html#element-interfaces
+  const elementNames = 'a,abbr,address,area,article,aside,audio,b,base,bdi,bdo,blockquote,body,br,button,canvas,caption,cite,code,col,colgroup,data,datalist,dd,del,details,dfn,dialog,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,head,header,hr,html,i,iframe,img,input,ins,kbd,label,legend,li,link,main,map,mark,meta,meter,nav,noscript,object,ol,optgroup,option,output,p,param,picture,pre,progress,q,rb,rp,rt,rtc,ruby,s,samp,script,section,select,small,source,span,strong,style,sub,summary,sup,table,tbody,td,template,textarea,tfoot,th,thead,time,title,tr,track,u,ul,var,video,wbr'.split(',');
+  scope = scope || window;
+  for (const name of elementNames) {
+    if (name in scope && !overrideOverwriteScope) {
+      console.warn('Will skip registering function %s on scope, because it already exists', name);
+    } else {
+      scope[name] = (...content) => element(name, ...content)
+    }
+  }
+  return scope;
+}

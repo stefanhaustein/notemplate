@@ -3,7 +3,7 @@
 <style>
   label, input, button {display:block;}
 </style>
-  
+
 <p>A simple todo list inspired by the corresponding
   <a href="https://reactjs.org/">React</a> example.</p>
 
@@ -14,7 +14,7 @@
 <script src="../src/notemplate.js"></script>
 <script type="text/javascript">
 
-
+  registerElementHelpers();
 
   var state = {
     text: "",
@@ -22,8 +22,8 @@
   };
 
   function todoList(items) {
-    return element("ul", items.map(item =>
-      element("li", {key: item.id}, item.text)));
+    return ul(items.map(item =>
+      li({key: item.id}, item.text)));
   }
 
   function handleSubmit(event) {
@@ -38,14 +38,14 @@
 
   function render() {
     document.getElementById("todos-example").replaceWith(
-      element("div", {id: "todos-example"},
+      div({id: "todos-example"},
         todoList(state.items),
-        element("form", {submit: handleSubmit},
-          element("label", "What needs to be done?", {htmlFor: "new-todo"}),
-          element("input", {
+        form({submit: handleSubmit},
+          label("What needs to be done?", {htmlFor: "new-todo"}),
+          input({
             id: "new-todo",
             change: e => state.text = e.target.value}),
-          element("button", "Add #", this.state.items.length + 1))));
+          button("Add #", this.state.items.length + 1))));
   }
 
   render();
