@@ -23,7 +23,7 @@ For components, create functions that return elements.
 
 ## Use Cases
 
- - quotations.ch/quotations
+ - [quotations.ch](quotations.ch/quotations)
 
 Let me know if I should add anything here.
 
