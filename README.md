@@ -38,7 +38,7 @@ document.body.appendChild(
 
 ```javascript
 
-registerElementHelpers();
+element.registerHelpers();
 document.body.appendChild(
   p("Hello ",
     a({
@@ -51,7 +51,7 @@ or if you don't want to use global variables, pass an object that will get augme
 
 ```javascript
 
-tag = registerElementHelpers({});
+tag = element.registerHelpers({});
 tag.p('Hello World')
 ```
 
