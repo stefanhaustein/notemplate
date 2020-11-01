@@ -21,6 +21,12 @@ Additional parameters build the content:
 
 For components, create functions that return elements.
 
+## Use Cases
+
+ - quotations.ch/quotations
+
+Let me know if I should add anything here.
+
 ## Simple Example
 
 ```javascript
