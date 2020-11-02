@@ -42,6 +42,8 @@ document.body.appendChild(
 
 ## Using the helper
 
+By calling an optional function, you can use HTML element names as functions for elements:
+
 ```javascript
 
 element.registerHelpers();
@@ -58,7 +60,7 @@ or if you don't want to use global variables, pass an object that will get augme
 
 ```javascript
 
-tag = element.registerHelpers({});
+tag = element.registerHelpers( {} );
 tag.p('Hello World')
 ```
 
