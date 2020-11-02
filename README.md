@@ -62,7 +62,7 @@ tag = element.registerHelpers({});
 tag.p('Hello World')
 ```
 
-See the files <demo/todolist.html> and <demo/todolist2.html> for a comparison between an example without and with the helper functions.
+See the files [demo/todolist.html](demo/todolist.html) and [demo/todolist2.html](demo/todolist2.html) for a comparison between an example without and with the helper functions.
 
 
 ## TodoMVC Implementation
