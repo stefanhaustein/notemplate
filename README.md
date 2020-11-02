@@ -40,6 +40,33 @@ document.body.appendChild(
       "World")));
 ```
 
+## Using the helper
+
+By calling an optional function, you can use HTML element names as functions for elements:
+
+```javascript
+
+element.registerHelpers();
+document.body.appendChild(
+  p(
+    "Hello ",
+    a({
+      href: "#",
+      click: event => alert("Hello")},
+    "World")));
+```
+
+or if you don't want to use global variables, pass an object that will get augmented with helper functions:
+
+```javascript
+
+tag = element.registerHelpers( {} );
+tag.p('Hello World')
+```
+
+See the files [demo/todolist.html](demo/todolist.html) and [demo/todolist2.html](demo/todolist2.html) for a comparison between an example without and with the helper functions.
+
+
 ## TodoMVC Implementation
 
 - [Source Code](https://github.com/stefanhaustein/notemplate/blob/master/demo/todomvc/js/app.js) (< 150 LOC; the view code starts around line 56)
