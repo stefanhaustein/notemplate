@@ -8,7 +8,7 @@ function element(name, ...content) {
         if (child instanceof Node) {
           element.appendChild(child);
         } else if (child != null) {
-          for (key in child) {
+          for (let key in child) {
             let value = child[key];
             if (key == "class") {
               let names = Array.isArray(value) ? value.flat(Infinity) : value.split(' ');
@@ -19,7 +19,7 @@ function element(name, ...content) {
               }
             } else if (key == "style") {
               if (typeof value == 'object') {
-                for (propertyName in value) {
+                for (let propertyName in value) {
                   element.style.setProperty(propertyName, value[propertyName]);
                 }
               } else {
