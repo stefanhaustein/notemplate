@@ -44,7 +44,9 @@
           label("What needs to be done?", {htmlFor: "new-todo"}),
           input({
             id: "new-todo",
-            change: e => state.text = e.target.value}),
+            change: e => state.text = e.target.value,
+            autofocus: true,
+            value: state.text}),
           button("Add #", this.state.items.length + 1))));
   }
 

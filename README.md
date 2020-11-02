@@ -46,11 +46,12 @@ document.body.appendChild(
 
 element.registerHelpers();
 document.body.appendChild(
-  p("Hello ",
+  p(
+    "Hello ",
     a({
-        href: "#",
-        click: event => alert("Hello")},
-      "World")));
+      href: "#",
+      click: event => alert("Hello")},
+    "World")));
 ```
 
 or if you don't want to use global variables, pass an object that will get augmented with helper functions:
@@ -60,6 +61,9 @@ or if you don't want to use global variables, pass an object that will get augme
 tag = element.registerHelpers({});
 tag.p('Hello World')
 ```
+
+See the files <demo/todolist.html> and <demo/todolist2.html> for a comparison between an example without and with the helper functions.
+
 
 ## TodoMVC Implementation
 
