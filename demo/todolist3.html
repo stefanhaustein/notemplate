@@ -19,7 +19,7 @@
 <script src="../src/notemplate.js"></script>
 <script type="text/javascript">
 
-// Example, using the tag-function
+// Example, using the (deprecated) element-function (for testing purposes)
 
   var state = {
     text: "",
@@ -27,8 +27,8 @@
   };
 
   function todoList(items) {
-    return tag("ul", items.map(item =>
-      tag("li", {key: item.id}, item.text)));
+    return element("ul", items.map(item =>
+      element("li", {key: item.id}, item.text)));
   }
 
   function handleSubmit(event) {
@@ -43,16 +43,16 @@
 
   function render() {
     document.getElementById("todos-example").replaceWith(
-      tag("div", {id: "todos-example"},
+      element("div", {id: "todos-example"},
         todoList(state.items),
-        tag("form", {submit: handleSubmit},
-          tag("label", "What needs to be done?", {htmlFor: "new-todo"}),
-          tag("input", {
+        element("form", {submit: handleSubmit},
+          element("label", "What needs to be done?", {htmlFor: "new-todo"}),
+          element("input", {
             id: "new-todo",
             change: e => state.text = e.target.value,
             autofocus: true,
             value: state.text}),
-          tag("button", "Add #", this.state.items.length + 1))));
+          element("button", "Add #", this.state.items.length + 1))));
   }
 
   render();

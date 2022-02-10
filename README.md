@@ -2,7 +2,7 @@
 
 After working on html templating for ~10 years, I think the best template library is no template library.
 
-NoTemplate.js provides only a single function `element()`. Use nested `element()` calls to build a DOM tree in pure JS in a concise and safe manner without any special syntax, compiler or preprocessor:
+NoTemplate.js provides only a single function `tag()`. Use nested `tag()` calls to build a DOM tree in pure JS in a concise and safe manner without any special syntax, compiler or preprocessor:
 
 The first parameter is the element name.
 
@@ -32,37 +32,29 @@ Let me know if I should add anything here.
 ```javascript
 
 document.body.appendChild(
-  element("p",
+  tag("p",
     "Hello ",
-    element("a", {
+    tag("a", {
         href: "#",
         click: event => alert("Hello")},
       "World")));
 ```
 
-## Using the helper
+## Using the helper functions
 
-By calling an optional function, you can use HTML element names as functions for elements:
+Instead of writing `tag("p", ...)`, you also can write `tag.p(...)`:
 
 ```javascript
 
-element.registerHelpers();
 document.body.appendChild(
-  p(
+  tag.p(
     "Hello ",
-    a({
-      href: "#",
-      click: event => alert("Hello")},
-    "World")));
+    tag.a({
+        href: "#",
+        click: event => alert("Hello")},
+      "World")));
 ```
 
-or if you don't want to use global variables, pass an object that will get augmented with helper functions:
-
-```javascript
-
-tag = element.registerHelpers( {} );
-tag.p('Hello World')
-```
 
 See the files [demo/todolist.html](demo/todolist.html) and [demo/todolist2.html](demo/todolist2.html) for a comparison between an example without and with the helper functions.
 
