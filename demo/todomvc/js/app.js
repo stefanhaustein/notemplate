@@ -57,11 +57,11 @@
 
   function render() {
     document.getElementsByClassName("todoapp")[0].replaceWith(
-      element("section", {class: "todoapp"},
-        element("header", {class: "header"},
-          element("h1", "todos"),
-          element("form", {submit: event => addItem(event)},
-            element("input", {
+      tag.section({class: "todoapp"},
+        tag.header({class: "header"},
+          tag.h1("todos"),
+          tag.form({submit: event => addItem(event)},
+            tag.input({
                 class: "new-todo",
                 autofocus: true,
                 placeholder: "What needs to be done?",
@@ -72,56 +72,53 @@
 
   function renderMain() {
     return state.items.length == 0 ? null :
-      element("section", {class: "main"},
-        element("input", {
+      tag.section({class: "main"},
+        tag.input({
             id: "toggle-all",
             class: "toggle-all",
             checked: countOpenItems() == 0,
             type: "checkbox",
             click: event => setAll(event.target.checked)}),
-        element("label", {for: "toggle-all"}, "Mark all as complete"),
+        tag.label({for: "toggle-all"}, "Mark all as complete"),
         renderTodoList(state.items));
   }
 
   function renderFooter() {
     return state.items.length == 0 ? null :
-      element("footer", {class: "footer"},
-        element("span", {class: "todo-count"},
-          element("strong", countOpenItems()), " items left"),
-        element("ul",
-          {class: "filters"},
+      tag.footer({class: "footer"},
+        tag.span({class: "todo-count"},
+          tag.strong(countOpenItems()), " items left"),
+        tag.ul({class: "filters"},
            [["All", ""], ["Active", "active"], ["Completed", "completed"]].map(([label, key]) =>
-            element("li",
-              element("a", {
+            tag.li(tag.a({
                 href: "#/" + key,
                 class: currentFilter == key ? "selected" : ""},
               label)))));
   }
 
   function renderTodoList() {
-    return element("ul", {class: "todo-list"}, state.items.map((item, index) => renderItem(item, index)));
+    return tag.ul({class: "todo-list"}, state.items.map((item, index) => renderItem(item, index)));
   }
 
   function renderItem(item, index) {
     if (currentFilter == (item.completed ? "active" : "completed")) {
       return null;
     }
-    return element("li",
-      (item.completed ? {class: "completed"} : null), {
+    return tag.li((item.completed ? {class: "completed"} : null), {
         dblclick: event => {
           let li = event.target.closest("li");
           li.classList.add("editing");
           li.querySelector(".edit").focus();
         }},
-      element("div", {class: "view"},
-        element("input", {
+      tag.div({class: "view"},
+        tag.input({
             class: "toggle",
             type: "checkbox",
             checked: item.completed,
             change: () => toggleItem(index)}),
-        element("label", item.text),
-        element("button", {class: "destroy"}, () => destroyItem(index))),
-      element("input", {
+        tag.label(item.text),
+        tag.button({class: "destroy"}, () => destroyItem(index))),
+      tag.input({
         class: "edit",
         value: item.text,
         change: e => {

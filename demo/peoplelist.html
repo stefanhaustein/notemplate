@@ -11,8 +11,8 @@ Inspired by a corresponding
 
   // The "template"
   function renderPersonList(personList) {
-    return element("ul", personList.map(person =>
-      element("li", person.firstName, " ", person.lastName)));
+    return tag.ul(personList.map(person =>
+      tag.li(person.firstName, " ", person.lastName)));
   }
 
   // Some example data to render

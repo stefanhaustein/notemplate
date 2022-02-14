@@ -2,9 +2,9 @@
 
 After working on html templating for ~10 years, I think the best template library is no template library.
 
-NoTemplate.js provides only a single function `element()`. Use nested `element()` calls to build a DOM tree in pure JS in a concise and safe manner without any special syntax, compiler or preprocessor:
+NoTemplate.js provides only a single function `tag()`. Use nested `tag()` calls to build a DOM tree in pure JS in a concise and safe manner without any special syntax, compiler or preprocessor:
 
-The first parameter is the element name.
+The first parameter is the element name. Each HTML5 element also has a helper function registered on the tag function, so instead of using `tag("p", ...)`, one can also use `tag.p(...)`.
 
 Additional parameters build the content:
 
@@ -32,9 +32,9 @@ Let me know if I should add anything here.
 ```javascript
 
 document.body.appendChild(
-  element("p",
+  tag.p(
     "Hello ",
-    element("a", {
+    tag.a({
         href: "#",
         click: event => alert("Hello")},
       "World")));

@@ -1,6 +1,14 @@
+<!DOCTYPE html>
 <html>
+<head>
+  <meta charset="utf-8">
+  <title>TODO</title>
+</head>
 <body>
-
+<style>
+  label, input, button {display:block;}
+</style>
+  
 <p>A simple todo list inspired by the corresponding
   <a href="https://reactjs.org/">React</a> example.</p>
 
@@ -11,14 +19,16 @@
 <script src="../src/notemplate.js"></script>
 <script type="text/javascript">
 
+// Example, using the tag-function
+
   var state = {
     text: "",
     items: []
   };
 
   function todoList(items) {
-    return element("ul", items.map(item =>
-      element("li", {key: item.id}, item.text)));
+    return tag.ol(items.map(item =>
+      tag.li({key: item.id}, item.text)));
   }
 
   function handleSubmit(event) {
@@ -28,19 +38,22 @@
       id: Date.now()
     };
     state.items.push(newItem);
+    state.text = '';
     render();
   }
 
   function render() {
     document.getElementById("todos-example").replaceWith(
-      element("div", {id: "todos-example"},
+      tag.div({id: "todos-example"},
         todoList(state.items),
-        element("form", {submit: handleSubmit},
-          element("label", {htmlFor: "new-todo"},
-          element("input", {
+        tag.form({submit: handleSubmit},
+          tag.label("What needs to be done?", {htmlFor: "new-todo"}),
+          tag.input({
             id: "new-todo",
-            change: e => state.text = e.target.value}),
-          element("button", "Add #", this.state.items.length + 1)))));
+            change: e => state.text = e.target.value,
+            autofocus: true,
+            value: state.text}),
+          tag.button("Add #", this.state.items.length + 1))));
   }
 
   render();
