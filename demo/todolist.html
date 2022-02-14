@@ -27,7 +27,7 @@
   };
 
   function todoList(items) {
-    return tag.ul(items.map(item =>
+    return tag.ol(items.map(item =>
       tag.li({key: item.id}, item.text)));
   }
 
@@ -38,6 +38,7 @@
       id: Date.now()
     };
     state.items.push(newItem);
+    state.text = '';
     render();
   }
 
