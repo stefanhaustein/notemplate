@@ -27,8 +27,8 @@
   };
 
   function todoList(items) {
-    return tag("ul", items.map(item =>
-      tag("li", {key: item.id}, item.text)));
+    return tag.ul(items.map(item =>
+      tag.li({key: item.id}, item.text)));
   }
 
   function handleSubmit(event) {
@@ -43,16 +43,16 @@
 
   function render() {
     document.getElementById("todos-example").replaceWith(
-      tag("div", {id: "todos-example"},
+      tag.div({id: "todos-example"},
         todoList(state.items),
-        tag("form", {submit: handleSubmit},
-          tag("label", "What needs to be done?", {htmlFor: "new-todo"}),
-          tag("input", {
+        tag.form({submit: handleSubmit},
+          tag.label("What needs to be done?", {htmlFor: "new-todo"}),
+          tag.input({
             id: "new-todo",
             change: e => state.text = e.target.value,
             autofocus: true,
             value: state.text}),
-          tag("button", "Add #", this.state.items.length + 1))));
+          tag.button("Add #", this.state.items.length + 1))));
   }
 
   render();

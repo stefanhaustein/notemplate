@@ -11,8 +11,8 @@ Inspired by a corresponding
 
   // The "template"
   function renderCarProperties(car) {
-    return tag("ul", Object.entries(car).map(([property, value]) =>
-      tag("li", property, " ", value)));
+    return tag.ul(Object.entries(car).map(([property, value]) =>
+      tag.li(property, " ", value)));
   }
 
   // Some data to render

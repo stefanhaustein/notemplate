@@ -4,7 +4,7 @@ After working on html templating for ~10 years, I think the best template librar
 
 NoTemplate.js provides only a single function `tag()`. Use nested `tag()` calls to build a DOM tree in pure JS in a concise and safe manner without any special syntax, compiler or preprocessor:
 
-The first parameter is the element name.
+The first parameter is the element name. Each HTML5 element also has a helper function registered on the tag function, so instead of using `tag("p", ...)`, one can also use `tag.p(...)`.
 
 Additional parameters build the content:
 
@@ -32,21 +32,6 @@ Let me know if I should add anything here.
 ```javascript
 
 document.body.appendChild(
-  tag("p",
-    "Hello ",
-    tag("a", {
-        href: "#",
-        click: event => alert("Hello")},
-      "World")));
-```
-
-## Using the helper functions
-
-Instead of writing `tag("p", ...)`, you also can write `tag.p(...)`:
-
-```javascript
-
-document.body.appendChild(
   tag.p(
     "Hello ",
     tag.a({
@@ -54,10 +39,6 @@ document.body.appendChild(
         click: event => alert("Hello")},
       "World")));
 ```
-
-
-See the files [demo/todolist.html](demo/todolist.html) and [demo/todolist2.html](demo/todolist2.html) for a comparison between an example without and with the helper functions.
-
 
 ## TodoMVC Implementation
 
