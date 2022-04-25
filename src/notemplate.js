@@ -6,8 +6,13 @@
 
   function tag(name, ...content) {
     if (Array.isArray(name) && name.raw) {
-      // TODO: merge strings (name) and keys (content)
-      return new RawHtml(name[0]);
+      //TODO: oops, fails, list should be inside RawHtml-object.
+      let result = [RawHtml(name[0])];
+      for(let i=1; i<name.length; i++) {
+        result.push(content[i-1]);
+        result.push(name[i]);
+      }
+      return result;
     }
     let element = document.createElement(name);
     let children = content.flat(Infinity);
