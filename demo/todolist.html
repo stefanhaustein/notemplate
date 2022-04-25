@@ -47,7 +47,7 @@
       tag.div({id: "todos-example"},
         todoList(state.items),
         tag.form({submit: handleSubmit},
-          tag.label("What needs to be done?", {htmlFor: "new-todo"}),
+          tag.label(tag`What needs to be done &amp; be done with?`, {htmlFor: "new-todo"}),
           tag.input({
             id: "new-todo",
             change: e => state.text = e.target.value,
