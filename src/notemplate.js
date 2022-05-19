@@ -1,19 +1,38 @@
 (function(global) {
 
-  function RawHtml(innerHTML) {
-    this.innerHTML = innerHTML;
+  function raw(strings, ...expressions) {
+    let fragment = new DocumentFragment();
+    let appendHtml = (html) => {
+      let fauxElement = document.createElement('div');
+      fauxElement.innerHTML = html;
+      for(let node of Array.from(fauxElement.childNodes)) {
+        fragment.append(node);
+      }
+    }
+    if (Array.isArray(strings) && strings.raw) {
+      // Tagged templates entry-point
+      console.info('text[0]: ', strings[0]);
+      appendHtml(strings[0]);
+      for(let index = 1; index < strings.length; index++) {
+        let expression = expressions[index - 1];
+        if (expression instanceof Node) {
+          fragment.append(expression);
+        } else {
+          // Convert everything else to string
+          appendHtml(String(expression));
+        }
+        appendHtml(strings[index]);
+      }
+    } else {
+      // Called as a function
+      for(let index = 0; index < arguments.length; index++) {
+        appendHtml(arguments[index]);
+      }
+    }
+    return fragment;
   }
 
   function tag(name, ...content) {
-    if (Array.isArray(name) && name.raw) {
-      //TODO: oops, fails, list should be inside RawHtml-object.
-      let result = [RawHtml(name[0])];
-      for(let i=1; i<name.length; i++) {
-        result.push(content[i-1]);
-        result.push(name[i]);
-      }
-      return result;
-    }
     let element = document.createElement(name);
     let children = content.flat(Infinity);
     for (let i = 0; i < children.length; i++) {
@@ -22,8 +41,6 @@
         case 'object':
           if (child instanceof Node) {
             element.appendChild(child);
-          } else if (child instanceof RawHtml) {
-            element.innerHTML += child.innerHTML;
           } else if (child != null) {
             for (let key in child) {
               let value = child[key];
@@ -73,9 +90,6 @@
   for (const name of tag.tagNames) {
     tag[name] = (...content) => tag(name, ...content)
   }
-  tag.RAW = (innerHTML) => {
-    return new RawHtml(innerHTML)
-  }
   // function element as a (deprecated) synonym for tag for now for compatibility
   function element(...content) {
     const code = 'font-family:monospace;font-weight:bold', reset = 'font-family:unset;font-weight:unset';
@@ -85,7 +99,8 @@
 
   // Export
   global.tag = tag;
-  global.element = element;
+  global.raw = raw;
+  global.element = element; // deprecated
 
 })(window);
 
