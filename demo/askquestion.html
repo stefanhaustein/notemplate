@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Ask Question</title>
+</head>
+<body>
+<style>
+  label, textarea {display:block;}
+  #html-preview { background-color: #eee;}
+</style>
+  
+<p>A demo showing the various uses of the <code>raw</code> (both function and tagged template), inspired by <a href="https://stackoverflow.com/questions/ask">stack overflow</a> using <a href="https://marked.js.org">Marked</a>.</p>
+
+<h3>Ask Question</h3>
+
+<div id="askquestion-example"><div></div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="../src/notemplate.js"></script>
+<script type="text/javascript">
+
+// Example, using the tag-function
+
+  function render() {
+    const codeExample = '<code>`code`</code>'
+    const markdownHelp = tag.a('more»', {href:'https://daringfireball.net/projects/markdown/syntax', title:'More syntax help', target:'_blank'});
+    const htmlPreview = tag.div({id:'html-preview'}, tag.div());
+    document.getElementById('askquestion-example').firstElementChild.replaceWith(
+      tag.div(
+        tag.textarea({
+          keyup: e => {
+            const html = marked.parse(e.target.value);
+            htmlPreview.firstElementChild.replaceWith(tag.div(raw(html)));
+            //htmlPreview.firstElementChild.innerHTML = html;
+          },
+          autofocus: true, rows:12, cols:80},
+          '# Please specify a title\n\nEnter your **details** here.\n')),
+        tag.p({style:{color:'gray'}}, 
+          raw`${raw(codeExample)} &nbsp; <strong>**bold**</strong> &nbsp; <em>_italic_</em> &nbsp; ${markdownHelp}`),
+        htmlPreview,
+        tag.hr()
+      );
+      document.getElementsByTagName('textarea')[0].dispatchEvent(new KeyboardEvent('keyup'));
+  }
+
+  document.addEventListener('DOMContentLoaded', function(e) {
+    render();
+  });
+</script>
+</body>
+</html>
