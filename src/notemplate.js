@@ -1,3 +1,33 @@
+function raw(strings, ...expressions) {
+  let fragment = new DocumentFragment();
+  let appendHtml = (html) => {
+    let fauxElement = document.createElement('div');
+    fauxElement.innerHTML = html;
+    for(let node of Array.from(fauxElement.childNodes)) {
+      fragment.append(node);
+    }
+  }
+  if (Array.isArray(strings) && strings.raw) {
+    // Tagged templates entry-point
+    appendHtml(strings[0]);
+    for(let index = 1; index < strings.length; index++) {
+      let expression = expressions[index - 1];
+      if (expression instanceof Node) {
+        fragment.append(expression);
+      } else {
+        fragment.append(document.createTextNode(expression));
+      }
+      appendHtml(strings[index]);
+    }
+  } else {
+    // Called as a function
+    for(let index = 0; index < arguments.length; index++) {
+      appendHtml(arguments[index]);
+    }
+  }
+  return fragment;
+}
+
 function tag(name, ...content) {
   let element = document.createElement(name);
   let children = content.flat(Infinity);
