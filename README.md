@@ -2,9 +2,9 @@
 
 After working on html templating for ~10 years, I think the best template library is no template library.
 
-NoTemplate.js provides only two functions, `tag()` and `raw()`. Use nested `tag()` calls to build a DOM tree in pure JS in a concise and safe manner without any special syntax, compiler or preprocessor:
+NoTemplate.js provides only two functions, `tag()` and `raw()`. Use nested `tag()` calls to build a DOM tree in pure JS in a concise and safe manner without any special syntax, compiler or preprocessor; `raw()` can be used to mark "safe" raw HTML content that won't be escaped.
 
-The first parameter is the element name. Each HTML5 element also has a helper function registered on the tag function, so instead of using `tag("p", ...)`, one can also use `tag.p(...)`.
+The first parameter of `tag()` is the element name. Each HTML5 element also has a helper function registered on the tag function, so instead of using `tag("p", ...)`, one can also use `tag.p(...)`.
 
 Additional parameters build the content:
 
@@ -21,7 +21,7 @@ Additional parameters build the content:
 
 For components, create functions that return elements.
 
-`raw()` can be used to mark "safe" raw HTML content that won't be escaped.
+
 
 ## Is this a Joke?
 
