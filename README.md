@@ -33,7 +33,7 @@ pulling in half the world as dependencies.
 ## Use Cases
 
  - [quotations.ch](https://quotations.ch/quotations)
- - [Integer Exposed Rewriter](https://blog.zanstra.com/ict/2023/05/03/integer-exposed-rewrite.html)
+ - [Integer Exposed Rewrite](https://blog.zanstra.com/ict/2023/05/03/integer-exposed-rewrite.html)
 
 Let me know if I should add anything here.
 
