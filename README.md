@@ -25,7 +25,7 @@ For components, create functions that return elements.
 
 ## Is this a Joke?
 
-As much as vanilla.js: I am using this myself for [quotations.ch](https://quotations.ch/quotations) to simplify "old-school" HTML 
+As much as [vanilla.js](http://vanilla-js.com/): I am using this myself for [quotations.ch](https://quotations.ch/quotations) to simplify "old-school" HTML 
 construction from JavaScript, replacing direct use of the DOM API. For larger projects, it might make more sense to use something
 like vue.js to decouple rendering and state management. I hope this project might help people to "get going" with small projects without
 pulling in half the world as dependencies.
